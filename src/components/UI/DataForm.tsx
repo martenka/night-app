@@ -2,7 +2,12 @@ import React, {useReducer} from 'react';
 import Input from "./Input";
 import styles from "./dataform.module.css";
 import Button from "./Button";
-import {ApiResponseInterface, AppActionTypes, DataFormState, useAppContext} from "../../store/app-context";
+import {
+    ApiResponseInterface,
+    AppActionTypes,
+    DataFormState,
+    useAppContext
+} from "../../store/app-context";
 import {dateValidator, getDataFromLocAndTime} from "../../utils/utils";
 
 export enum DataFormActionTypes {
@@ -59,6 +64,7 @@ const DataForm = () => {
 
         const apiResult = await getDataFromLocAndTime(formState.latitude, formState.longitude, formState.date);
 
+        appDataDispatch({type: AppActionTypes.SearchDataChange, payload: formState as DataFormState});
         appDataDispatch({type: AppActionTypes.ApiResponseChange, payload: {data: apiResult.results, responseReady: true} as ApiResponseInterface});
     }
 

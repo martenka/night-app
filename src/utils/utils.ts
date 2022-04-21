@@ -1,6 +1,6 @@
 
 export const getDataFromLocAndTime = async (latitude: string, longitude: string, date: string) => {
-    const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${date}`,{
+    const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${date}&formatted=0`,{
         method: "GET"
     });
     return await response.json();

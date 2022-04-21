@@ -1,5 +1,6 @@
 .coordinate-form {
     display: flex;
+    padding-left: 5rem;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;

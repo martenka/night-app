@@ -59,7 +59,7 @@ function App() {
                             />
                             <Marker position={[mapLoc.latitude, mapLoc.longitude]}>
                                 <Popup>
-                                    {appState.api.data != null && appState.api.responseReady ? <DataShower data={appState.api.data} /> : <p>No data yet!</p>}
+                                    {appState.api.responseReady ? <DataShower api={appState.api} searchInfo={appState.searchInfo} /> : <p>No data yet!</p>}
                                 </Popup>
                             </Marker>
                         </PositionUpdate>

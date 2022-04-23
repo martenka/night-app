@@ -7,7 +7,7 @@ export enum AppActionTypes {
 }
 
 export interface SunsetApiInterface {
-    day_length: string,
+    day_length: number,
     sunrise: string,
     sunset: string,
     astronomical_twilight_begin: string,
@@ -25,9 +25,10 @@ export interface DataFormState {
 }
 
 export interface ApiResponseInterface {
-    data?: SunsetApiInterface,
+    data: SunsetApiInterface,
     responseReady: boolean,
 }
+
 export interface AppDataInterface {
     api: ApiResponseInterface
     searchInfo: DataFormState
@@ -44,7 +45,7 @@ export interface AppContextType {
 }
 
 export const initialApiResponse : SunsetApiInterface = {
-    day_length: "",
+    day_length: 0,
     sunrise: "",
     sunset: "",
     astronomical_twilight_begin: "",
@@ -69,7 +70,7 @@ export const initialAppState : AppDataInterface = {
 }
 
 export const initialAppContext: AppContextType = {
-    appData: undefined,
+    appData: initialAppState,
     appDataDispatch: () => {}
 }
 

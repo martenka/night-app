@@ -56,6 +56,8 @@ export const initialApiResponse : SunsetApiInterface = {
     nautical_twilight_end: "",
     solar_noon: ""
 }
+export const INITIAL_LATITUDE = "58.37845756789319";
+export const INITIAL_LONGITUDE = "26.726193241544344";
 
 export const initialAppState : AppDataInterface = {
     api : {
@@ -63,8 +65,8 @@ export const initialAppState : AppDataInterface = {
         data: initialApiResponse
     },
     searchInfo: {
-        latitude: "",
-        longitude: "",
+        latitude: INITIAL_LATITUDE,
+        longitude: INITIAL_LONGITUDE,
         date: ""
     }
 }

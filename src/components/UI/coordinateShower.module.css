@@ -1,0 +1,13 @@
+.coordinates {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 8%;
+    right: 2%;
+    min-width: 10rem;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 10;
+    padding: 0.5rem;
+}

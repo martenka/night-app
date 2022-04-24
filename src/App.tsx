@@ -7,12 +7,13 @@ import {
     AppActionTypes,
     AppContext,
     AppDataInterface,
-    DataFormState,
+    DataFormState, INITIAL_LATITUDE, INITIAL_LONGITUDE,
     initialAppState
 } from "./store/app-context";
 import DataShower from "./components/UI/DataShower";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import PositionUpdate from "./components/Wrappers/positionUpdate";
+import CoordinateShower from "./components/UI/CoordinateShower";
 
 export interface PositionObject {
     latitude: number,
@@ -42,8 +43,8 @@ function App() {
         //TODO Night time is calculated wrongly
         // Location formatter not implemented
         return {
-            latitude: appState.searchInfo.latitude !== "" ? parseFloat(appState.searchInfo.latitude) : 58.37845756789319,
-            longitude: appState.searchInfo.longitude !== "" ? parseFloat(appState.searchInfo.longitude) : 26.726193241544344,
+            latitude: appState.searchInfo.latitude !== "" ? parseFloat(appState.searchInfo.latitude) : parseFloat(INITIAL_LATITUDE),
+            longitude: appState.searchInfo.longitude !== "" ? parseFloat(appState.searchInfo.longitude) : parseFloat(INITIAL_LONGITUDE),
         }
     }, [appState.searchInfo.latitude,appState.searchInfo.longitude]);
     return (
@@ -64,6 +65,7 @@ function App() {
                             </Marker>
                         </PositionUpdate>
                     </MapContainer>
+                    <CoordinateShower />
                 </main>
             </div>
         </AppContext.Provider>

@@ -1,6 +1,14 @@
 .button {
-    /*background-color: #FF424E;*/
+    background-color: #95d5b2;
+    border: none;
     width: 5rem;
     padding: 0.5rem;
     border-radius: 25px;
+}
+
+.button:hover {
+    background-color: #52b788;
+}
+.button:active {
+    background-color: #2d6a4f;
 }

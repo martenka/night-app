@@ -14,6 +14,7 @@ import DataShower from "./components/UI/DataShower";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import PositionUpdate from "./components/Wrappers/positionUpdate";
 import CoordinateShower from "./components/UI/CoordinateShower";
+import NightArea from "./components/Misc/NightArea";
 
 export interface PositionObject {
     latitude: number,
@@ -63,6 +64,7 @@ function App() {
                                     {appState.api.responseReady ? <DataShower api={appState.api} searchInfo={appState.searchInfo} /> : <p>No data yet!</p>}
                                 </Popup>
                             </Marker>
+                            <NightArea app={appState} />
                         </PositionUpdate>
                     </MapContainer>
                     <CoordinateShower />

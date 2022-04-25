@@ -12,12 +12,24 @@ export const coordinateFormatter = (location: string | undefined) => {
 
     const baseCoord = parseFloat(location);
     const degree = Math.floor(baseCoord);
-    const minuteExact = (baseCoord % 1) * 60;
+    const minuteExact = Math.abs((baseCoord % 1) * 60);
     const minute = Math.floor(minuteExact);
     const second = (minuteExact % 1) * 60;
 
     return `${degree}° ${minute}' ${second.toFixed(3)}"`;
 
+}
+
+export const getTimeToUse = (mainDate: Date | string | undefined, fallback: string | undefined) => {
+    if (mainDate) return mainDate.toString();
+    if (fallback == null) return new Date().toString();
+
+    const today = new Date();
+    let timeToUse = new Date(fallback);
+    if (timeToUse.toString() === "Invalid Date") timeToUse = today;
+    timeToUse.setHours(today.getHours(),today.getMinutes());
+
+    return timeToUse.toString();
 }
 
 export const dateValidator = (date:string): boolean => {

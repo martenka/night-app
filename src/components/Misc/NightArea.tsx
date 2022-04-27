@@ -14,7 +14,6 @@ interface NightAreaProps {
 
 const NightArea = (props: NightAreaProps) => {
     const map = useMap();
-
     useEffect(() => {
         const timeToUse = getTimeToUse(props.overwriteDate?.toString(), props.app.searchInfo.date);
         const mapTerminator = terminator({time: timeToUse});

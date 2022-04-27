@@ -18,7 +18,7 @@ const PositionUpdate = (props : React.PropsWithChildren<{loc: PositionObject}>) 
         map.setView(event.latlng,map.getZoom());
 
         const apiResult = await getDataFromLocAndTime(event.latlng.lat+"", event.latlng.lng+"", dayjs().format("YYYY-MM-DD"));
-        appDataDispatch({type: AppActionTypes.SearchDataChange, payload: {latitude: event.latlng.lat+"", longitude: event.latlng.lng+"", date: dayjs().format("YYYY-MM-DD")}})
+        appDataDispatch({type: AppActionTypes.SearchDataChange, payload: {latitude: event.latlng.lat+"", longitude: event.latlng.lng+"", date: dayjs().format("YYYY-MM-DD HH:mm")}})
         appDataDispatch({type: AppActionTypes.ApiResponseChange, payload: {data: apiResult.results, responseReady: true} as ApiResponseInterface});
     });
 

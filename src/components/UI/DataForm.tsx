@@ -8,7 +8,8 @@ import {
     DataFormState,
     useAppContext
 } from "../../store/app-context";
-import {dateValidator, getDataFromLocAndTime} from "../../utils/utils";
+import {dateValidator, getDataFromLocAndTime, locationParser} from "../../utils/utils";
+import dayjs from "dayjs";
 
 export enum DataFormActionTypes {
     LatChange = "LAT_CHANGE",
@@ -44,7 +45,7 @@ export const dataFormReducer = (dataState: DataFormState, action: DataFormAction
     }
 }
 
-const initialDataFormState : DataFormState= {
+const initialDataFormState: DataFormState = {
     latitude: "",
     longitude: "",
     date: "",
@@ -54,18 +55,38 @@ const DataForm = () => {
     const [formState, dispatch] = useReducer(dataFormReducer, initialDataFormState);
     const {appDataDispatch} = useAppContext();
 
-    const submitHandler = async (event : React.FormEvent<HTMLFormElement>) => {
+    const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if(!dateValidator(formState.date)) {
-            console.log("Date has wrong format!");
+        const parsedLat = locationParser(formState.latitude, "LAT");
+        const parsedLong = locationParser(formState.longitude, "LONG");
+
+        if (!dateValidator(formState.date) || parsedLat === "NaN" || parsedLong === "NaN") {
+            alert("Input data is in wrong format!")
             return;
         }
 
-        const apiResult = await getDataFromLocAndTime(formState.latitude, formState.longitude, formState.date);
+        let parsedDate = formState.date.trim() === "" ? dayjs() : dayjs(formState.date.trim());
+        if (formState.date.indexOf(":") < 0) {
+            const current = dayjs();
+            parsedDate = parsedDate.set("hour",current.hour()).set("minute",current.minute());
+        }
 
-        appDataDispatch({type: AppActionTypes.SearchDataChange, payload: formState as DataFormState});
-        appDataDispatch({type: AppActionTypes.ApiResponseChange, payload: {data: apiResult.results, responseReady: true} as ApiResponseInterface});
+        const apiResult = await getDataFromLocAndTime(parsedLat, parsedLong, parsedDate.format("YYYY-MM-DD"));
+
+        appDataDispatch({
+            type: AppActionTypes.SearchDataChange,
+            payload: {
+                latitude: parsedLat,
+                longitude: parsedLong,
+                date: parsedDate.format("YYYY-MM-DD HH:mm")
+            } as DataFormState
+        });
+
+        appDataDispatch({
+            type: AppActionTypes.ApiResponseChange,
+            payload: {data: apiResult.results, responseReady: true} as ApiResponseInterface
+        });
     }
 
     return (

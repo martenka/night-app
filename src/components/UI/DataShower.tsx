@@ -1,15 +1,12 @@
 import React from 'react';
 import {AppDataInterface} from "../../store/app-context";
 import dayjs from "dayjs";
-import CustomParseFormat from "dayjs/plugin/customParseFormat";
-
-dayjs.extend(CustomParseFormat);
 
 const DataShower = (props:AppDataInterface) => {
-    let nightPeriod = 24 - dayjs(props.api.data.nautical_twilight_end).diff(dayjs(props.api.data.nautical_twilight_begin),"hour",true).valueOf();
+    let nightPeriod = 24 - dayjs(props.api.data.sunset).diff(dayjs(props.api.data.sunrise),"hour",true).valueOf();
 
     //API doesn't seem to show 24h daylight for polar regions
-    if (props.api.data.nautical_twilight_end === props.api.data.nautical_twilight_begin) {
+    if (props.api.data.sunset === props.api.data.sunrise) {
         const lat = parseFloat(props.searchInfo.latitude);
 
         const month = dayjs(props.searchInfo.date).month();

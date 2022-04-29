@@ -51,6 +51,9 @@ const initialDataFormState: DataFormState = {
     date: "",
 }
 
+/**
+ * Handles the manual input
+ */
 const DataForm = () => {
     const [formState, dispatch] = useReducer(dataFormReducer, initialDataFormState);
     const {appDataDispatch} = useAppContext();

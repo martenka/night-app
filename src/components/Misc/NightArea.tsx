@@ -18,7 +18,6 @@ const NightArea = (props: NightAreaProps) => {
         const timeToUse = getTimeToUse(props.overwriteDate?.toString(), props.app.searchInfo.date);
         const mapTerminator = terminator({time: timeToUse});
         mapTerminator.setStyle(props.mapStyle ?? {color: "rgb(0,15,56)",fillColor: "rgba(0,52,92,0.5)", weight: 2});
-
         mapTerminator.addTo(map);
         return () => {
             mapTerminator.remove();

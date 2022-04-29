@@ -1,3 +1,9 @@
+/**
+ * Fetches data from sunset API
+ * @param latitude - Coordinate in decimal format
+ * @param longitude - Coordinate in decimal format
+ * @param date - Date in one of the format sunset API allows. This app uses YYYY-MM-DD format.
+ */
 export const getDataFromLocAndTime = async (latitude: string, longitude: string, date: string) => {
     const response = await fetch(`https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${date}&formatted=0`,{
         method: "GET"
@@ -5,7 +11,11 @@ export const getDataFromLocAndTime = async (latitude: string, longitude: string,
     return await response.json();
 }
 
-
+/**
+ * Formats decimal coordinates into degrees-minutes-seconds <br/>
+ * Seconds are shown with three decimals places of precision.
+ * @param location
+ */
 export const coordinateFormatter = (location: string | undefined) => {
     if (location == null) return "";
 
@@ -19,6 +29,10 @@ export const coordinateFormatter = (location: string | undefined) => {
 
 }
 
+/**
+ * Gets the date/time to use. If both mainDate and fallback props are invalid then current local datetime is used
+ * @return Date string to use
+ */
 export const getTimeToUse = (mainDate: Date | string | undefined, fallback: string | undefined) => {
     if (mainDate) return mainDate.toString();
     if (fallback == null) return new Date().toString();
@@ -33,6 +47,9 @@ export const getTimeToUse = (mainDate: Date | string | undefined, fallback: stri
     return timeToUse.toString();
 }
 
+/**
+ * Validates the date with regex
+ */
 export const dateValidator = (date:string): boolean => {
     if (date == null) return false;
     const regex = new RegExp("^([0-9][0-9][0-9][0-9]-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])( ([0-1][0-9]|2[0-3]):[0-5][0-9])?)?$");
@@ -40,6 +57,12 @@ export const dateValidator = (date:string): boolean => {
     return regex.test(date.trim());
 }
 
+/**
+ *
+ * @param loc
+ * @param mode
+ * @return Parsed location in decimal or "NaN" on invalid input
+ */
 export const locationParser = (loc: string, mode: "LAT" | "LONG"): string | "NaN" => {
     //Checks if location is a decimal number
     if (loc == null) return "NaN";

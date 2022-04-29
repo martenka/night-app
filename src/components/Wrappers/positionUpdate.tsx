@@ -9,6 +9,10 @@ import {
 import dayjs from "dayjs";
 import {getDataFromLocAndTime} from "../../utils/utils";
 
+/**
+ * Updates the map popup either from clicking on the map or via props changing <br/>
+ * If clicked on the map then also new data is fetched from the sunset API
+ */
 const PositionUpdate = (props : React.PropsWithChildren<{loc: PositionObject}>) => {
     const map = useMap();
     const {appDataDispatch} = useAppContext();

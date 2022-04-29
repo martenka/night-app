@@ -41,8 +41,6 @@ function App() {
 
     const [appState, appDispatch] = useReducer(appReducer, initialAppState);
     const mapLoc : PositionObject = useMemo(() => {
-        //TODO Night time is calculated wrongly
-        // Location formatter not implemented
         return {
             latitude: appState.searchInfo.latitude !== "" ? parseFloat(appState.searchInfo.latitude) : parseFloat(INITIAL_LATITUDE),
             longitude: appState.searchInfo.longitude !== "" ? parseFloat(appState.searchInfo.longitude) : parseFloat(INITIAL_LONGITUDE),

@@ -1,5 +1,5 @@
 # Documentation
-## Estonian
+## Eesti
 ### Rakenduse kasutamise õpetus
 
 Algselt programmi käivitades on vaikeasukohaks Tartu (Saab muuta INITIAL_LATITUDE, INITIAL_LONGITUDE abil.
@@ -20,7 +20,7 @@ Kaardil vajutades kasutatakse alati hetke kuupäeva ja kellaaega.
 
 
 ### Üldine
-
+Kõik kokku võttis projekt aega 11-13h tööd.
 Suure osa ajast võttis materjalide lugemine  
 ja Reacti/Typescripti meeldetuletamine.  
 Öiseks perioodiks sai lõpuks valitud päikeseloojangu ja tõusu vaheline aeg, sest kodutöö  
@@ -37,10 +37,11 @@ komponendile ka oma TypeScript tüübid, kuna plugin on alselt JavaScript baasil
 1. TypeScript
 2. React
 3. [Leaflet](https://leafletjs.com/)
-4. [Leaflet-Terminator](https://github.com/joergdietrich/Leaflet.Terminator)
+4. [React-Leaflet](https://react-leaflet.js.org/)
+5. [Leaflet-Terminator](https://github.com/joergdietrich/Leaflet.Terminator)
    1. Joonistab öist ala
-5. [Dayjs](https://day.js.org/)
-6. [Sunset/sunrise api](https://sunrise-sunset.org/api)
+6. [Dayjs](https://day.js.org/)
+7. [Sunset/sunrise api](https://sunrise-sunset.org/api)
 
 ## English
 ### How to use the app
@@ -63,9 +64,9 @@ The night area is indicated by the darker area.
 
 
 ### General
-
+All together this project took 11-13h of work.
 Reading different documentations took a big part of the development time. 
-I chose time time between sunset and sunrise for the night period, as it was said so in the homework document. At first I chose "nautical twilight" for the calculations,  
+I chose time between sunset and sunrise for the night period, as it was said so in the homework document. At first I chose "nautical twilight" for the calculations,  
 as it seemed that was the time when it actually got too dark to operate outside well.
 
 ### Problems
@@ -77,10 +78,11 @@ The biggest problem was drawing the night area. My solution was (after researchi
 1. TypeScript
 2. React
 3. [Leaflet](https://leafletjs.com/)
-4. [Leaflet-Terminator](https://github.com/joergdietrich/Leaflet.Terminator)
+4. [React-Leaflet](https://react-leaflet.js.org/)
+5. [Leaflet-Terminator](https://github.com/joergdietrich/Leaflet.Terminator)
    1. For the night area
-5. [Dayjs](https://day.js.org/)
-6. [Sunset/sunrise api](https://sunrise-sunset.org/api)
+6. [Dayjs](https://day.js.org/)
+7. [Sunset/sunrise api](https://sunrise-sunset.org/api)
 
 # Running the app
 Run `npm install` before starting the app for the first time  
